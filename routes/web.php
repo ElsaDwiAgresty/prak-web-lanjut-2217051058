@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +11,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/user/create', [UserController::class,
+'create']);
+
+Route::post('user/store', [UserController::class,
+'store']) ->name ('user.store');
