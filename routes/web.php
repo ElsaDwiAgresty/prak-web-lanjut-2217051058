@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\ProfileController;
 
@@ -19,3 +19,9 @@ Route::get('/profile', function () {
     return view('profile');
 });
 Route::get('/profile/{nama}/{kelas}/{npm}', [ProfileController::class, 'profile']);
+
+Route::get('/user/create', [UserController::class,
+'create']);
+
+Route::post('user/store', [UserController::class,
+'store']) ->name ('user.store');
