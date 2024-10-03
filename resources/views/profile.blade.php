@@ -24,6 +24,6 @@
         <div class="bg-gray-300 py-2 px-4 rounded mb-8 mx-6">
             <p>Kelas: {{ $nama_kelas ?? 'Kelas tidak ditemukan'}}</p>
         </div>
-    </div>
+    </div>`
 </body>
 </html>
