@@ -34,7 +34,7 @@ class UserController extends Controller
     //     return view('profile', $data);
     // }
 
-    public function store(UserRequest $request){
+    public function store(Request $request){
         $validatedData = $request->validate([
             'nama' => 'required|string|max:255',
             'npm' => 'required|string|max:255',
