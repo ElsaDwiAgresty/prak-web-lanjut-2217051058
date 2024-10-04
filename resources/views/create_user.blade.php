@@ -9,6 +9,10 @@
 </head>
 
 <body>
+
+@extends('layouts.app')
+
+@section('content')
     <h1 class="text-center text-2xl mb-6 font-bold mt-4">Isi Biodata</h1>
     <form action="{{ route('user.store') }}" method="POST" class="flex justify-center">
         @csrf
@@ -48,6 +52,8 @@
             </div>
         </div>
     </form>
+@endsection
+
 </body>
 
 </html>
