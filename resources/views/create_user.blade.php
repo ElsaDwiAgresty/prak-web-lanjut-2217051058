@@ -14,7 +14,7 @@
 
 @section('content')
     <h1 class="text-center text-2xl mb-6 font-bold mt-4">Isi Biodata</h1>
-    <form action="{{ route('user.store') }}" method="POST" class="flex justify-center">
+    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data" class="flex justify-center">
         @csrf
         <div class="bg-slate-400 h-auto w-96 p-6 rounded-lg"> 
             
@@ -45,6 +45,11 @@
                 @foreach($errors->get('kelas_id') as $msg)
                     <p class="text-red-500 text-sm font-semibold mt-1">{{ $msg }}</p>
                 @endforeach
+            </div>
+
+            <div class="mt-4 flex flex-col items-start">
+                <label for="foto" class="text-black font-bold text-lg mb-2">foto:</label><br>
+                <input type="file" id="foto" name="foto"><br><br>
             </div>
 
             <div class="mt-6 flex justify-end">

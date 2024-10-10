@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <div class="container mt-4">
+
     <h1 class="mb-4">Daftar Pengguna</h1>
+    <a href="{{ route ('user.create') }}" class="btn btn-primary mb-3">Tambah Pengguna Baru</a>
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead class="thead-light">
