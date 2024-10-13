@@ -90,50 +90,6 @@ class UserController extends Controller
             //return redirect()->to('/user');
             return redirect()->to('/user')->with('success', 'User berhasil ditambahkan');
     }
-
-    public function edit($id){
-        $user = UserModel::findOrFail($id);
-        $kelasModel = new Kelas();
-        $kelas = $kelasModel->getKelas();
-        $title = 'Edit User';
-        return view('edit_user', compact('user', 'kelas', 'title'));
-
-    }
-
-    public function update(Request $request, $id){
-        $user = UserModel::findOrFail($id);
-
-        $user->nama = $request->nama;
-        $user->npm = $request->npm;
-        $user->kelas_id = $request->kelas_id;
-
-        if ($request->hasFile('foto')){
-            $fileName = time() . '_' . $request->foto->getClientOriginalName();
-            $request->foto->move(public_path('uploads'), $fileName);
-            $user->foto = 'uploads/' . $fileName;
-        }
-
-        $user->save();
-
-        return redirect()->route('user.list')->with('success', 'user update successfully');
-    }
-
-    public function destroy($id){
-        $user = UserModel::findOrFail($id);
-        $user->delete();
-
-        return redirect()->route('user.list')->with('Success, data has been deleted succesfully');
-    }
-
-    public function show($id){
-        $user = UserModel::findOrFail($id);
-        $kelas = Kelas::find($user->kelas_id);
-
-        $title = 'Detail '.$user->nama;
-
-        return view('profile', compact('user', 'kelas', 'title'));
-    }
-
     //     $user = UserModel::create($validatedData);
 
     //     $user->load('kelas');

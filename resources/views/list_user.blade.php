@@ -29,9 +29,9 @@
                         </td>
                         <td>
                             <div class="d-flex justify-content-center">
-                                <a href="{{ route('user.show', $user['id'])}}" class="btn btn-primary btn-sm">View</a>
-                                <a href="{{ route('user.edit', $user['id']) }}" class="btn btn-sm btn-warning mx-2">Edit</a>
-                                <form action="{{ route('user.destroy', $user['id']) }}" method="POST" style="display:inline-block;">
+                                <a href="" class="btn btn-primary btn-sm">View</a>
+                                <a href="" class="btn btn-sm btn-warning mx-2">Edit</a>
+                                <form action="" method="POST" style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger mx-0.5" onclick="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?')">Delete</button>
