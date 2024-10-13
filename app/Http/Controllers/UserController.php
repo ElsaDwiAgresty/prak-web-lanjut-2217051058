@@ -70,26 +70,28 @@ class UserController extends Controller
         ]);
 
         // Meng-handle upload foto
-if ($request->hasFile('foto')) {
-    $foto = $request->file('foto');
-    // Menyimpan file foto di folder 'uploads'
-    $foto_name = $foto->hashName();
-    $fotoPath = $foto->move(('assets/uploads/img'), $foto_name);
-    } else {
-    // Jika tidak ada file yang diupload, set fotoPath menjadi null atau default
-    $fotoPath = null;
-    }
-    // Menyimpan data ke database termasuk path foto
-    $this->UserModel->create([
-    'nama' => $request->input('nama'),
-    'npm' => $request->input('npm'),
-    'kelas_id' => $request->input('kelas_id'),
-    'foto' => $fotoPath, // Menyimpan path foto
-    ]);
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            // Menyimpan file foto di folder 'uploads'
+            $foto_name = $foto->hashName();
+            $fotoPath = $foto->move(('uploads'), $foto_name);
+        } else {
+            // Jika tidak ada file yang diupload, set fotoPath menjadi null atau default
+            $fotoPath = null;
+        }
+        // Menyimpan data ke database termasuk path foto
+        $this->UserModel->create([
+            'nama' => $request->input('nama'),
+            'npm' => $request->input('npm'),
+            'kelas_id' => $request->input('kelas_id'),
+            'foto' => $fotoPath, // Menyimpan path foto
+        ]);
 
-        //return redirect()->to('/user');
-        return redirect()->to('/user')->with('success', 'User berhasil ditambahkan');
+            //return redirect()->to('/user');
+            return redirect()->to('/user')->with('success', 'User berhasil ditambahkan');
     }
+
+    
 
     //     $user = UserModel::create($validatedData);
 
