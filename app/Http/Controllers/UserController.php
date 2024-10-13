@@ -96,6 +96,7 @@ class UserController extends Controller
         $kelasModel = new Kelas();
         $kelas = $kelasModel->getKelas();
         $title = 'Edit User';
+        
         return view('edit_user', compact('user', 'kelas', 'title'));
 
     }

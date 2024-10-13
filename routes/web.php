@@ -26,7 +26,11 @@ Route::post('/user/store', [UserController::class, 'store'])->name('user.store')
 Route::resource('user', UserController::class);
 
 Route::put('/user{id}', [UserController::class, 'update'])->name('user.update');
+
 Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+
 Route::get('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+
 Route::get('/show/{id}', [UserController::class, 'show'])->name('user.show');
+
 Route::get('/', [UserController::class, 'index'])->name('user.list');
