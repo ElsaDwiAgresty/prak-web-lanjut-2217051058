@@ -15,17 +15,24 @@ class UserModel extends Model
     public function kelas(){
         return $this->belongsTo(Kelas::class, 'kelas_id');
     }
+    public function fakultas(){
+        return $this->belongsTo(FakultasModel::class, 'fakultas_id');
+    }
+    
 
     public function getUser(){
         return $this->join('kelas', 'user.kelas_id', '=', 'kelas.id')
-        ->select('user.*', 'kelas.nama_kelas as nama_kelas')
-        ->get();
+            ->join('fakultas', 'user.fakultas_id', '=', 'fakultas.id') // join dengan tabel fakultas
+            ->select('user.*', 'kelas.nama_kelas as nama_kelas', 'fakultas.nama_fakultas as nama_fakultas') // pilih nama fakultas
+            ->get();
     }
 
     protected $fillable = [
         'nama',
-        'npm',
+        'smt',
         'kelas_id',
+        'fakultas_id',
+        'jurusan',
         'foto',
     ];
 }
