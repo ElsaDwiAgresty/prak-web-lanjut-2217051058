@@ -73,8 +73,10 @@ class UserController extends Controller
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
             // Menyimpan file foto di folder 'uploads'
-            $foto_name = $foto->hashName();
-            $fotoPath = $foto->move(('uploads'), $foto_name);
+            // $foto_name = $foto->hashName();
+            // $fotoPath = $foto->storeAs('uploads', $foto_name);
+            $filename = time() . '_' . $foto->getClientOriginalName();
+            $foto->storeAs('uploads', $filename); // Menyimpan file ke storage
         } else {
             // Jika tidak ada file yang diupload, set fotoPath menjadi null atau default
             $fotoPath = null;
@@ -84,7 +86,7 @@ class UserController extends Controller
             'nama' => $request->input('nama'),
             'npm' => $request->input('npm'),
             'kelas_id' => $request->input('kelas_id'),
-            'foto' => $fotoPath, // Menyimpan path foto
+            'foto' => $filename, // Menyimpan path foto
         ]);
 
             //return redirect()->to('/user');

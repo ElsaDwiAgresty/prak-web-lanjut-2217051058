@@ -11,7 +11,7 @@
     <div class="text-center text-sm font-bold font-serif bg-slate-700 h-96 w-64 rounded-lg">
         <div class="h-36 w-36 bg-gray-300 rounded-full mx-auto mt-4">
             @if($user['foto'])
-                <img src="{{ asset($user['foto']) }}" alt="User Photo" width="full" class="rounded-full" >
+                <img src="{{ asset('storage/uploads/' . $user->foto) }}" alt="User Photo" width="full" class="rounded-full" >
             @endif
         </div>
         
